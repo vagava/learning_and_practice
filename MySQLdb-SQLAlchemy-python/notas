@@ -1,0 +1,23 @@
+Iniciar|Detener el servicio de MySQL: `sudo /etc/init.d/mysql start|stop`
+
+Iniciar el servicio de MySQL en modo abierto (cuando se olvida la contraseña): `mysqld_safe --skip-grant-tables` o `mysqld_safe --skip-grant-tables --skip-networking&`
+Este comando, con la opción –skip-grant-tables, iniciará MySQL sin emplear el sistema de privilegios, por lo que tendrás acceso 
+ilimitado a todas las bases de datos.La opción –skip-networking hará que se dejen de escuchar conexiones TCP/IP externas, lo que
+evitará problemas externos durante el cambio.
+
+Compruebe de nuevo los métodos de autenticación: `SELECT user,authentication_string,plugin,host FROM mysql.user;`
+
+Pasos para cambiar el password en mysql:
+- sudo mysql -u root 
+- use MySQL;
+- UPDATE user SET authentication_string=password('contraseña') WHERE user='root';
+- ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'; (cambiar el complemento de autenticacion de MySQL)
+- FLUSH PRIVILEGES; (para indicar al servidor que vuelva a cargar la tabla de permisos y aplique sus nuevos cambios)
+
+Si la autenticación por contraseña habilitada para root, mysql se inicia: `mysql -u root -p`
+
+***Recursos***
+https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-database
+https://clouding.io/hc/es/articles/360011456619-C%C3%B3mo-recuperar-la-contrase%C3%B1a-de-root-de-MySQL
+https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04-es
+https://stackoverflow.com/questions/30692812/mysql-user-db-does-not-have-password-columns-installing-mysql-on-osx
