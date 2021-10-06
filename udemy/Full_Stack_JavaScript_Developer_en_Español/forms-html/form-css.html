@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Formulario con CSS</title>
+  <style>
+    * { /*esto se aplicaraa todos los elementos*/
+      box-sizing: border-box; /*acomoda todo el contenido*/
+    }
+
+    body {
+      background-color: #cccccc;
+    }
+    input[type="text"],/*soloselecciona los tipo texto*/
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px; /*margen interna*/
+      /*margin: 8px 0px; margen externa*/
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+      resize: vertical;
+      background-color: white;
+    }
+    label {
+      padding: 12px 12px 12px 0;
+      display: block;
+    }
+    select {
+      /*border: none;*/
+      /*padding: 10px;*/
+      height: 40px;
+      /*margin: 8px 0px;*/
+    }
+
+    button {
+      background-color: blueviolet;
+      border: none;
+      color: white;
+      padding: 12px 32px ; /*vertical / horizontal*/
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      margin: 16px 0;
+    }
+    button:hover {
+      background-color: rgb(100, 36, 248);
+    }
+    input:focus { /*solo dos puntos es una pseudo clase */
+      background-color: cadetblue;
+      border: 5px solid rgb(94, 93, 93);
+    }
+
+    .container{
+      border-radius: 4px;
+      background-color: rgba(137, 43, 226, 0.226);
+      padding: 20px;
+      width: 500px;
+      margin: auto;
+    }
+    ::placeholder { /*los dospares de dospuntos significa que es un pseudo
+      elemento, osea un elemento oculto*/
+      color: rgb(136, 134, 134)
+    }
+
+
+  </style>
+</head>
+<body>
+  <h1>Formulario estilizado con css</h1>
+  <div class="container">
+    <form action="http://localhost:3000" method="POST">
+    <label for="nombre">Nombre</label>
+    <input type="text" name="nombre" id="nombre" placeholder="pon tu nombre aqui" required/>
+    <label for="apellido">Apellido</label>
+    <input type="text" name="apellido" id="apellido" placeholder="pon tu nombre aqui" required/>
+    <label for="pais">Pais</label>
+    <select name="pais" id="pais">
+      <option disabled selected hidden>Seleccione</option>
+      <option>Colombia</option>
+      <option>Peru</option>
+      <option>Mexico</option>
+      <option>Venezuela</option>
+    </select>
+    <button type="submit">Enviar</button>
+    </form>
+  </div>
+</body>
