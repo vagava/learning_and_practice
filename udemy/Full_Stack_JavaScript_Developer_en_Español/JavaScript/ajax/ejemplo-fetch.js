@@ -51,7 +51,7 @@ function enviarDatos(event) {
     method = "POST";
   } else if (accion === 'Editar') {
     if (indice.value) {
-      url = `http://localhost:3001/users/${indice.vlue}`;
+      url = `http://localhost:3001/users/${indice.value}`;
       method = "PUT";
     }
   } else {
@@ -64,7 +64,7 @@ function enviarDatos(event) {
     },
     body: JSON.stringify(datos),
   })
-  .then(response => response.json())
+  .then(response => response.json()) // respuesta no se puede leer, se tranforma en json
   .then(respuestaJson=>{
     console.log('respuesta', respuestaJson);
     refrescar();
